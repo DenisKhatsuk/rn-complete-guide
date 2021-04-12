@@ -29,7 +29,15 @@ const App = () => {
         />
       </View>
       <View>
-        { goalsList.map((item,  idx) => <Text key = { idx }>{ item }</Text>) }
+        { goalsList.map((item,  idx) => {
+          return (
+            <Text 
+              key = { idx }
+              style = { styles.listItem }>
+                { item }
+            </Text>
+          );
+        }) }
       </View>
     </View>
   );
@@ -48,6 +56,13 @@ const styles = StyleSheet.create({
   input: {
     width: '80%',
     padding: 10,
+    borderColor: 'black',
+    borderWidth: 1,
+  },
+  listItem: {
+    padding: 10,
+    marginVertical: 10,
+    backgroundColor: '#ccc',
     borderColor: 'black',
     borderWidth: 1,
   },
