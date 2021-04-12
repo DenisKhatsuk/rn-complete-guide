@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
@@ -19,7 +19,7 @@ const App = () => {
       <View style={ styles.inputContainer }>
         <TextInput
           placeholder="Course Goal"
-          style={ styles.input }
+          style = { styles.input }
           onChangeText = { onChangeText }
           value = { inputValue }
         />
@@ -28,7 +28,9 @@ const App = () => {
           onPress = { onAddPress } 
         />
       </View>
-      <View>
+      <ScrollView 
+        style = { styles.list }
+        showsVerticalScrollIndicator = { false }>
         { goalsList.map((item,  idx) => {
           return (
             <Text 
@@ -38,7 +40,7 @@ const App = () => {
             </Text>
           );
         }) }
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -58,6 +60,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: 'black',
     borderWidth: 1,
+  },
+  list: {
+    marginTop: 10,
   },
   listItem: {
     padding: 10,
