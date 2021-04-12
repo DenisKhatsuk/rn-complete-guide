@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
@@ -28,19 +28,19 @@ const App = () => {
           onPress = { onAddPress } 
         />
       </View>
-      <ScrollView 
-        style = { styles.list }
-        showsVerticalScrollIndicator = { false }>
-        { goalsList.map((item,  idx) => {
+      <FlatList 
+        keyExtractor = { (item, index) => String(index) }
+        data = { goalsList }
+        renderItem = { ({ item }) => {
           return (
-            <Text 
-              key = { idx }
-              style = { styles.listItem }>
-                { item }
-            </Text>
+          <Text style = { styles.listItem }>
+            { item }
+          </Text>
           );
-        }) }
-      </ScrollView>
+        } }
+        style = { styles.list }
+        showsVerticalScrollIndicator = { false } 
+      />
     </View>
   );
 }
