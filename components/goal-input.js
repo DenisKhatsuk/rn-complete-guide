@@ -16,17 +16,17 @@ const GoalInput = ({ onAddPress }) => {
 
   return (
     <View style={ styles.inputContainer }>
-        <TextInput
-          placeholder="Course Goal"
-          style = { styles.input }
-          onChangeText = { onChangeText }
-          value = { inputValue }
-        />
-        <Button 
-          title = "ADD"
-          onPress = { onPress } 
-        />
-      </View>
+      <TextInput
+        placeholder="Course Goal"
+        style = { styles.input }
+        onChangeText = { onChangeText }
+        value = { inputValue }
+      />
+      <Button 
+        title = "ADD"
+        onPress = { onPress } 
+      />
+    </View>
   );
 };
 

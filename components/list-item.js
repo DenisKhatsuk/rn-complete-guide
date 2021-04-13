@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Pressable } from 'react-native';
 
-const ListItem = ({ title }) => {
+const ListItem = ({ title, onPress }) => {
   return (
-    <Text style = { styles.listItem }>
-      { title }
-    </Text>
+    <Pressable onLongPress = { onPress }>
+      <Text style = { styles.listItem }>
+        { title }
+      </Text>
+    </Pressable>
   );
 };
 
