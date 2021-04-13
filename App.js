@@ -5,25 +5,15 @@ import ListItem from './components/list-item';
 import GoalInput from './components/goal-input';
 
 const App = () => {
-  const [inputValue, setInputValue] = useState('');
   const [goalsList, setGoalsList] = useState([]);
 
-  const onChangeText = (inputValue) => {
-    setInputValue(inputValue);
-  };
-
-  const onAddPress = () => {
+  const onAddPress = (inputValue) => {
     setGoalsList(goalsList => [...goalsList, inputValue]);
-    setInputValue('');
   };
 
   return (
     <View style={ styles.container }>
-      <GoalInput 
-        inputValue = { inputValue }
-        onChangeText = { onChangeText }
-        onAddPress = { onAddPress }
-      />
+      <GoalInput onAddPress = { onAddPress } />
       <FlatList 
         keyExtractor = { (item, index) => String(index) }
         data = { goalsList }
