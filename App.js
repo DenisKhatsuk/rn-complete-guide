@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Button } from 'react-native';
 
 import ListItem from './components/list-item';
 import GoalInput from './components/goal-input';
 
 const App = () => {
   const [goalsList, setGoalsList] = useState([]);
+  const [isAddMode, setIsAddMode] = useState(false);
 
   const onAddPress = (inputValue) => {
     setGoalsList(goalsList => [...goalsList, inputValue]);
+    setIsAddMode(false);
+  };
+  
+  const onCancelPress = () => {
+    setIsAddMode(false);
   };
 
   const deleteListItem = (index) => {
@@ -20,7 +26,15 @@ const App = () => {
 
   return (
     <View style={ styles.container }>
-      <GoalInput onAddPress = { onAddPress } />
+      <Button 
+        title = "ADD NEW GOAL" 
+        onPress = { () => setIsAddMode(true) }
+      />
+      <GoalInput 
+        onAddPress = { onAddPress }
+        onCancel = { onCancelPress }
+        visible = { isAddMode } 
+      />
       <FlatList 
         keyExtractor = { (item, index) => String(index) }
         data = { goalsList }
